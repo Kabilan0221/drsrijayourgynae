@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book Appointment | Sri Sai Clinic &amp; Scans — Dr. M. Srija</title>
+<meta name="description" content="Book an appointment at Sri Sai Clinic & Scans, Konganapuram — Dr. M. Srija, Obstetrician & Gynaecologist.">
+<link rel="icon" type="image/png" href="images/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --plum-900:#2A0944;
+    --plum-800:#3B1259;
+    --plum-700:#4E1D71;
+    --gold-500:#C9A227;
+    --gold-300:#E4C766;
+    --cream-50:#FBF7F0;
+    --cream-100:#F5EEE1;
+    --blush-100:#F5E3DE;
+    --ink-900:#241a2e;
+    --ink-600:#5a4d68;
+    --white:#ffffff;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  ::selection{background:var(--gold-300); color:var(--plum-900);}
+  :focus-visible{outline:2px solid var(--gold-500); outline-offset:3px; border-radius:4px;}
+  body{
+    font-family:'Work Sans', sans-serif;
+    color:var(--ink-900);
+    background:linear-gradient(160deg, var(--plum-900) 0%, var(--plum-800) 55%, var(--plum-700) 100%);
+    min-height:100vh;
+    line-height:1.6;
+  }
+  h1,h2,h3{font-family:'Fraunces', serif; font-weight:600; line-height:1.1; letter-spacing:-0.01em;}
+  a{color:inherit; text-decoration:none;}
+  button{font-family:inherit; font-size:inherit; color:inherit; border:none; background:none; cursor:pointer; -webkit-appearance:none; appearance:none;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:640px; margin:0 auto; padding:0 20px;}
+  .eyebrow{
+    font-size:13px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase;
+    color:var(--gold-300); margin-bottom:10px; display:inline-block;
+  }
+
+  /* ---------- Top bar ---------- */
+  .topbar{padding:22px 0;}
+  .topbar .wrap{display:flex; align-items:center; justify-content:space-between;}
+  .brand{display:flex; align-items:center; gap:12px;}
+  .brand img{width:40px; height:40px; object-fit:contain;}
+  .brand .name{font-family:'Fraunces',serif; font-size:17px; font-weight:600; color:var(--cream-50); line-height:1.1;}
+  .brand .tag{font-size:10.5px; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold-300); font-weight:600;}
+  .back-link{
+    display:inline-flex; align-items:center; gap:6px; font-size:13.5px; font-weight:600;
+    color:rgba(251,247,240,0.8); transition:color .2s;
+  }
+  .back-link:hover{color:var(--gold-300);}
+  .back-link svg{width:16px; height:16px;}
+
+  /* ---------- Page head ---------- */
+  .page-head{text-align:center; padding:8px 0 30px; color:var(--cream-50);}
+  .page-head h1{font-size:clamp(26px,4vw,34px); color:var(--white); margin-top:6px;}
+  .page-head p{color:rgba(251,247,240,0.75); font-size:14.5px; margin-top:10px;}
+
+  /* ---------- Booking card ---------- */
+  .booking-card{
+    background:var(--cream-50); border-radius:26px 6px 26px 6px;
+    box-shadow:0 30px 60px -30px rgba(0,0,0,0.5); padding:30px; margin-bottom:60px;
+  }
+  .booking-head{padding-bottom:6px;}
+  .booking-head h3{font-family:'Fraunces',serif; font-size:23px; color:var(--plum-900);}
+  .booking-body{padding-top:16px;}
+  .b-field{margin-bottom:16px;}
+  .b-field label{display:block; font-size:13px; font-weight:600; color:var(--ink-600); margin-bottom:6px;}
+  .b-field input, .b-field select{
+    width:100%; padding:12px 14px; border-radius:10px; border:1.5px solid rgba(42,9,68,0.15);
+    font-family:inherit; font-size:14.5px; color:var(--ink-900); background:var(--white);
+  }
+  .b-field input:focus, .b-field select:focus{outline:none; border-color:var(--gold-500);}
+  .b-row{display:grid; grid-template-columns:1fr 1fr; gap:12px;}
+  .b-error{color:#b3261e; font-size:12.5px; margin-top:5px; display:none;}
+  .b-field.err input, .b-field.err select{border-color:#b3261e;}
+  .b-field.err .b-error{display:block;}
+  .booking-cta{display:flex; gap:12px; flex-wrap:wrap; margin-top:6px;}
+  .booking-cta button{
+    padding:13px 24px; border-radius:100px 8px 100px 8px; font-weight:700; font-size:14.5px;
+    transition:transform .2s, background .2s;
+  }
+  .booking-cta button:hover{transform:translateY(-1px);}
+  .b-primary{background:var(--plum-900); color:var(--cream-50);}
+  .b-primary:hover{background:var(--plum-700);}
+  .b-ghost{background:transparent; border:1.5px solid rgba(42,9,68,0.2) !important; color:var(--plum-900);}
+  .b-preview-box{background:var(--white); border:1.5px solid rgba(42,9,68,0.12); border-radius:16px 4px 16px 4px; padding:18px 20px; margin-bottom:18px;}
+  .b-preview-row{display:flex; justify-content:space-between; gap:14px; padding:7px 0; border-bottom:1px dashed rgba(42,9,68,0.1); font-size:14px;}
+  .b-preview-row:last-child{border-bottom:none;}
+  .b-preview-row .k{color:var(--ink-600); font-weight:600;}
+  .b-preview-row .v{color:var(--ink-900); text-align:right;}
+
+  @media (max-width:480px){
+    .booking-card{padding:22px 18px; border-radius:20px 6px 20px 6px;}
+    .b-row{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <img src="images/logo.png" alt="Sri Sai Clinic & Scans logo">
+      <div>
+        <div class="name">Sri Sai Clinic &amp; Scans</div>
+        <div class="tag">Happy Mom</div>
+      </div>
+    </a>
+    <a class="back-link" href="index.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Back to Home
+    </a>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="page-head">
+    <span class="eyebrow">Book Appointment</span>
+    <h1>Tell us about your visit</h1>
+    <p>Fill in your details below and we'll confirm your appointment over WhatsApp.</p>
+  </div>
+
+  <div class="booking-card">
+    <!-- FORM VIEW -->
+    <div id="bookingFormView">
+      <div class="booking-body">
+        <div class="b-field" id="f-name">
+          <label for="b-name">Full Name *</label>
+          <input type="text" id="b-name" placeholder="Enter your name">
+          <div class="b-error">Please enter your name</div>
+        </div>
+        <div class="b-row">
+          <div class="b-field" id="f-phone">
+            <label for="b-phone">Phone Number *</label>
+            <input type="tel" id="b-phone" placeholder="10-digit mobile number">
+            <div class="b-error">Enter a valid phone number</div>
+          </div>
+          <div class="b-field" id="f-age">
+            <label for="b-age">Age</label>
+            <input type="number" id="b-age" min="0" max="120" placeholder="Age">
+          </div>
+        </div>
+        <div class="b-field" id="f-location">
+          <label for="b-location">Location</label>
+          <input type="text" id="b-location" placeholder="Your area / town">
+        </div>
+        <div class="b-row">
+          <div class="b-field" id="f-date">
+            <label for="b-date">Preferred Date *</label>
+            <input type="date" id="b-date">
+            <div class="b-error">Please pick a date</div>
+          </div>
+          <div class="b-field" id="f-time">
+            <label for="b-time">Preferred Time *</label>
+            <input type="time" id="b-time">
+            <div class="b-error">Please pick a time</div>
+          </div>
+        </div>
+        <div class="b-field" id="f-purpose">
+          <label for="b-purpose">Purpose of Visit *</label>
+          <select id="b-purpose">
+            <option value="">Select purpose</option>
+          </select>
+          <div class="b-error">Please select a purpose</div>
+        </div>
+        <div class="booking-cta">
+          <button class="b-primary" type="button" onclick="previewBooking()">Preview</button>
+          <a class="b-ghost" href="index.html" style="display:inline-flex; align-items:center; padding:13px 24px; border-radius:100px 8px 100px 8px; font-weight:700; font-size:14.5px;">Cancel</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- PREVIEW VIEW -->
+    <div id="bookingPreviewView" style="display:none;">
+      <div class="booking-head">
+        <span class="eyebrow">Confirm your details</span>
+        <h3>Preview appointment</h3>
+      </div>
+      <div class="booking-body">
+        <div class="b-preview-box" id="bookingPreviewBox"></div>
+        <div class="booking-cta">
+          <button class="b-primary" type="button" onclick="confirmBooking()">Confirm &amp; Send via WhatsApp</button>
+          <button class="b-ghost" type="button" onclick="editBooking()">Edit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const services = [
+    { title:"Obstetric & Pregnancy Care", tam:"மகப்பேறு மருத்துவம்" },
+    { title:"Postnatal Care", tam:"பேறுகால பின் கவனிப்பு" },
+    { title:"Ultrasound Scan", tam:"அல்ட்ரா சவுண்ட் ஸ்கேன்" },
+    { title:"General Medicine", tam:"பொது மருத்துவம்" },
+    { title:"Child Health Care", tam:"குழந்தைகள் நலம்" },
+    { title:"Uterine Fibroids / Tumours", tam:"கர்ப்பப்பை கட்டிகள்" },
+    { title:"Ovarian Cysts", tam:"சினைப்பை கட்டிகள்" },
+    { title:"Menstrual Disorders", tam:"மாதவிடாய் கோளாறு" },
+    { title:"Infertility Treatment", tam:"குழந்தையின்மை" },
+    { title:"Family Planning Advice", tam:"கருத்தடை ஆலோசனை" },
+    { title:"Uterine Prolapse Care", tam:"கர்ப்பப்பை அடி இறங்குதல்" },
+    { title:"Blood Tests", tam:"இரத்தப் பரிசோதனை" },
+    { title:"Uterine Examination", tam:"கர்ப்பப்பை பரிசோதனை" }
+  ];
+
+  (function populatePurposeOptions(){
+    const sel = document.getElementById('b-purpose');
+    services.forEach(function(s){
+      const opt = document.createElement('option');
+      opt.value = s.title;
+      opt.textContent = s.title + ' — ' + s.tam;
+      sel.appendChild(opt);
+    });
+    [['General Medicine Consultation','பொது மருத்துவர் ஆலோசனை'], ['Other','மற்றவை']].forEach(function(t){
+      const opt = document.createElement('option');
+      opt.value = t[0];
+      opt.textContent = t[0] + ' — ' + t[1];
+      sel.appendChild(opt);
+    });
+
+    // Pre-select purpose if passed via ?purpose= in URL
+    const params = new URLSearchParams(window.location.search);
+    const purpose = params.get('purpose');
+    if(purpose) sel.value = purpose;
+  })();
+
+  function fmtDate(iso){
+    if(!iso) return '—';
+    const d = new Date(iso + 'T00:00:00');
+    if(isNaN(d)) return iso;
+    return d.toLocaleDateString('en-IN', { day:'2-digit', month:'short', year:'numeric' });
+  }
+  function fmtTime(t){
+    if(!t) return '—';
+    const parts = t.split(':');
+    let h = parseInt(parts[0], 10);
+    const m = parts[1];
+    const ap = h >= 12 ? 'PM' : 'AM';
+    h = h % 12; if(h === 0) h = 12;
+    return h + ':' + m + ' ' + ap;
+  }
+  function setErr(id, bad){
+    document.getElementById(id).classList.toggle('err', bad);
+  }
+
+  function previewBooking(){
+    const name = document.getElementById('b-name').value.trim();
+    const phone = document.getElementById('b-phone').value.trim();
+    const age = document.getElementById('b-age').value.trim();
+    const location = document.getElementById('b-location').value.trim();
+    const date = document.getElementById('b-date').value;
+    const time = document.getElementById('b-time').value;
+    const purpose = document.getElementById('b-purpose').value;
+
+    let valid = true;
+    if(name.length === 0) valid = false;
+    if(!/^\d{10}$/.test(phone.replace(/\D/g,''))) valid = false;
+    if(date.length === 0) valid = false;
+    if(time.length === 0) valid = false;
+    if(purpose.length === 0) valid = false;
+
+    setErr('f-name', name.length === 0);
+    setErr('f-phone', !/^\d{10}$/.test(phone.replace(/\D/g,'')));
+    setErr('f-date', date.length === 0);
+    setErr('f-time', time.length === 0);
+    setErr('f-purpose', purpose.length === 0);
+    if(!valid) return;
+
+    const rows = [
+      ['Name', name],
+      ['Phone', phone],
+      ['Age', age || '—'],
+      ['Location', location || '—'],
+      ['Date', fmtDate(date)],
+      ['Time', fmtTime(time)],
+      ['Purpose', purpose]
+    ];
+    const box = document.getElementById('bookingPreviewBox');
+    box.innerHTML = rows.map(function(r){
+      return '<div class="b-preview-row"><span class="k">' + r[0] + '</span><span class="v">' + r[1] + '</span></div>';
+    }).join('');
+
+    document.getElementById('bookingFormView').style.display = 'none';
+    document.getElementById('bookingPreviewView').style.display = '';
+    window.scrollTo({ top:0, behavior:'smooth' });
+  }
+  function editBooking(){
+    document.getElementById('bookingFormView').style.display = '';
+    document.getElementById('bookingPreviewView').style.display = 'none';
+  }
+  function confirmBooking(){
+    const name = document.getElementById('b-name').value.trim();
+    const phone = document.getElementById('b-phone').value.trim();
+    const age = document.getElementById('b-age').value.trim();
+    const location = document.getElementById('b-location').value.trim();
+    const date = document.getElementById('b-date').value;
+    const time = document.getElementById('b-time').value;
+    const purpose = document.getElementById('b-purpose').value;
+
+    const msg = "Hi, I would like to book an appointment at Sri Sai Clinic & Scans.\n" +
+      "Name: " + name + "\n" +
+      "Phone: " + phone + "\n" +
+      "Age: " + (age || '-') + "\n" +
+      "Location: " + (location || '-') + "\n" +
+      "Preferred Date: " + fmtDate(date) + "\n" +
+      "Preferred Time: " + fmtTime(time) + "\n" +
+      "Purpose: " + purpose;
+
+    window.open("https://wa.me/919344750119?text=" + encodeURIComponent(msg), "_blank", "noopener");
+  }
+</script>
+
+</body>
+</html>
